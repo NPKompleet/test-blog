@@ -1,0 +1,4 @@
+a= """ a boy is
+good to go
+"""
+print a

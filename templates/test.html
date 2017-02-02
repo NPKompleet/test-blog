@@ -1,0 +1,140 @@
+<p>I have always thought of a way to create a GUI for visualizing plots 
+the Matplotlib plotting tool. My favourite Python GUI toolkit is the wxPython library.
+It provides a fairly easy way to create beautiful GUIs and appears like a native GUI on most OS.
+</p>
+
+<p>Recently I had to create such a GUI . The first thought that came to me was to use the wx.Python
+backend in Matplotlib. While this is good and works well, it would require learning how to use the
+back end. I realised I couldnt create with Polar plots with it. Maybe I just didnt research it enough
+</p>
+
+<p>I do know a lot of people who could use Matplotlib well. And they could also use wxPython
+quite fairly too. So I thought of a way to create GUIs easily without the hassle of learning
+how to use the backends. The following example will work well for any kind ofplot that can be saved.
+</p>
+
+<p>
+A python code for generating 3 polar plots is shown below. The plots are then saved in
+as a file called mypolarplots.png
+</p>
+<code>
+<pre>
+import matplotlib.pyplot as plt
+import numpy as np
+
+theta = np.arange(0., 2., 1./180.)*np.pi
+plt.polar(3*theta, theta/5);
+plt.polar(theta, np.cos(4*theta));
+plt.polar(theta, [1.4]*len(theta));
+plt.savefig("mypolarplots.png")
+</pre>
+</code>
+
+<p>
+A python code for creating a scrolled window in wxPython is shown below
+</p>
+<code>
+<pre>
+import wx
+
+class ScrolledWindow(wx.Frame):
+    def __init__(self, parent, id, title):
+        wx.Frame.__init__(self, parent, id, title, size=(500, 400))
+        self.sw = wx.ScrolledWindow(self)
+		
+		self.sw.SetScrollbars(20, 20, 55, 40)
+        self.sw.Scroll(50,10)
+		
+        self.Centre()
+        self.Show()
+		
+app = wx.App()
+ScrolledWindow(None, -1, 'Scrolledwindow')
+app.MainLoop()
+</pre>		
+</code>
+
+
+<p>
+My method for visualizing Matplotlib plots with wxPython involves the use of the
+<b>os</b> and <b>tempfile</b> modules in the Python standard library. The 
+<b>tempfile</b> module is used to create temporary files on the system and the
+<b>os</b> module is used for opening and closing files and processes running on the
+operating system. The code below show the how to visualise Matplotlib plots in wxPython.
+</p>
+
+
+
+<code>
+<pre>
+<textarea>
+#!/usr/bin/python
+# matplotwind.py
+import wx, os
+import tempfile
+import matplotlib.pyplot as plt
+import numpy as np
+
+ 
+
+class ScrolledWindow(wx.Frame):
+    def __init__(self, parent, id, title):
+        wx.Frame.__init__(self, parent, id, title, size=(500, 400))
+        self.sw = wx.ScrolledWindow(self)
+
+        #this creates the temporary file
+        self.f=tempfile.mkstemp()
+
+        #the usual matplotlib plot generation:
+        theta = np.arange(0., 2., 1./180.)*np.pi
+        plt.polar(3*theta, theta/5);
+        plt.polar(theta, np.cos(4*theta));
+        plt.polar(theta, [1.4]*len(theta));
+        plt.savefig(self.f[1], format= "png")
+        
+        self.bmp = wx.Image(self.f[1], wx.BITMAP_TYPE_PNG).ConvertToBitmap()
+        wx.StaticBitmap(self.sw, -1, self.bmp)
+        self.sw.SetScrollbars(20, 20, 55, 40)
+        self.sw.Scroll(50,10)
+
+        self.Bind(wx.EVT_CLOSE, self.OnClose)
+        self.Centre()
+        self.Show()
+
+    def OnClose(self, evt):
+        os.close(self.f[0])
+        os.remove(self.f[1])
+        self.Destroy()
+
+    
+app = wx.App()
+ScrolledWindow(None, -1, 'Better Plots')
+app.MainLoop()
+</textarea>
+</pre>
+</code>
+
+<image src="/image?img_id=betterplots2.jpg">
+<br>
+<p>
+What the above does differently is to create the a temporary file variable called <b>self.f</b>
+This is done with the statement <code>self.f=tempfile.mkstemp()</code>.
+Doing this returns a two element tuple object whose first element is the file descriptor
+and the second element is the file path. 
+The matplotlib image is then saved in the file path using the <code>plt.savefig(self.f[1], format= "png")</code> statement.
+</p>
+<p>
+
+Next a wxImage is created from the image in the file path and then added to the widget.
+Another important part is where the widget is bound to the function that is called
+whenever someone tries to close the widget:<br>
+<code>self.Bind(wx.EVT_CLOSE, self.OnClose)</code>.<br>
+This calls the <b>OnClose</b> function when someone tries to close the widget.
+The <b>OnClose</b> fuction makes the Operating system close the temporary file
+using the file descriptor:<br>
+<code>os.close(self.f[0])</code><br>
+Then it the OS deletes the temporary file from the computer before the widget itself is 
+closed:<br>
+<code>os.remove(self.f[1])</code> 
+</p>
+

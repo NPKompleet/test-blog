@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>THoth: Intelligence, Graphics and Programming</title>
+	<link rel= "stylesheet" type= "text/css" href="stylesheet/style.css">
+	<script src="thoth.js"></script>
+</head>
+
+<body>
+	
+<a href="/"><img src="images/logo.jpg" alt="heading image" width="1074" height=""200"" class="header"></a>
+	<div class="header">
+		<h1></h1>
+		<ul class="header">
+			<li>Intelligence</li>
+			<li>Graphics</li>
+			<li>Programming</li>
+		</ul>
+	</div>
+	<div>
+		<form action="https://www.google.com/search">
+		<input name="p">
+		<input type= "submit" value="search">
+		</form>
+	</div>
+	<hr>
+	<div class="main">
+		<table class="main">
+		<tr>
+		<td><a href="/" class="main">HOME</a></td>
+		<td><a href="/downloads" class="main">DOWNLOADS</a></td>
+		<td><a href="/portfolio" class="main">PORTFOLIO</a></td>
+		</tr>
+		<td><a href="/education" class="main">EDUCATION</a></td>
+		<td><a href="/quotes" class="main">QUOTES<a></td>
+		<td><a href="/about" class="main">ABOUT ME</a></td>
+		</tr>
+		<tr>
+		<td><a href="/books" class="main">BOOKS</a></td>
+		</tr>
+		</table>
+		
+	</div>
+	<hr>
+
+	<div class="overall">
+	<br>
+	<br>
+	<h1>{{no_contents}}</h1>
+	<hr>
+	<br>
+	<div>
+		<form action="/" onchange="this.submit()">
+			<label for="sortdropdown"><b>Sort By:</b></label>
+			<select name= "sortdropdown">
+				<option value="all" {{all_selected}}>All</option>
+				<option value="artificial" {{artificial_selected}}>Artificial Intelligence</option>
+				<option value="graphics" {{graphics_selected}}>Graphics</option>
+				<option value="programming" {{programming_selected}}>Programming</option>
+				<option value="networking" {{networking_selected}}>Networking</option>
+				<option value="algorithms" {{algorithms_selected}}>Algorithm</option>
+				<option value="databases" {{databases_selected}}>Databases</option>
+				<option value="computationalphysics" {{computationalphysics_selected}}>Computational Physics</option>
+			</select>
+		</form>
+	</div>
+	<br>
+	<br>
+	<div class="contents">
+	{% for content in contents %}
+	<div class="content">
+	<a class="homepage" href="/contents?link={{content.link}}">{{content.heading}} </a>
+	<b><em> {{content.datetime.date().ctime()[:3]}}, {{content.datetime.date()}}</em></b>
+	<p>{{content.summary}}...
+	<a href="/contents?link={{content.link}}">continue</a>
+	</p>
+	</div>
+	<br>
+	<br>
+	{% endfor %}
+	</div>
+	
+	</div>
+	
+	<div class="sidebar">
+	</div>
+	
+	<div class="bottom_menu">
+		<table class="bottom_menu">
+		<tr>
+		<td><a class="bottom_menu" href="https://www.xkcd.com">XKCD</a></td>
+		<td><a class="bottom_menu" href="https://www.howstuffworks.com">HOW STUFF WORKS</a></td>
+		<td><a class="bottom_menu" href="https://www.ifls.com">IFLS</a></td>
+		</tr>
+		<tr>
+		<td><a class="bottom_menu" href="https://www.ted.com">TED</a></td>
+		<td><a class="bottom_menu" href="https://www.blender.org">BLENDER FOUNDATION</a></td>
+		<td><a class="bottom_menu" href="https://www.blendercookie.com">BLENDERCOOKIE</a></td>
+		</tr>
+		<tr>
+		<td><a class="bottom_menu" href="https://www.webgl.org">WEBGL</a></td>
+		<td><a class="bottom_menu" href="https://www.python.org">PYTHON</a></td>
+		<td><a class="bottom_menu" href="https://www.societyofrobot.com">SOCIETY OF ROBOT</a></td>
+		</tr>
+		<tr>
+		<td><a class="bottom_menu" href="https://www.udacity.com">UDACITY</a></td>
+		<td><a class="bottom_menu" href="https://www.cousera.org">COURSERA</a></td>
+		</tr>
+		</table>
+	</div>
+	
+	<br>
+	<br>
+	<br>
+	<div class="copyright" style="color:#005500; font-family: georgia, digital">
+	<p style="text-align: center">This site is the work of Philip "Phenomenon" Okonkwo</p>
+	<p style="text-align: center">2013</p>
+	</div>
+
+</body>
+</html>

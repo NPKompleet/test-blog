@@ -1,0 +1,30 @@
+application: engineapp-1
+version: 2
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+  
+- url: /stylesheet
+  static_dir: stylesheet
+  
+- url: /images
+  static_dir: images
+  
+- url: /source
+  static_dir: source
+  
+
+- url: .*
+  script: main.app
+
+libraries:
+- name: webapp2
+  version: "2.5.2"
+  
+- name: jinja2
+  version: latest

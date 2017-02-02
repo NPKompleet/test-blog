@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>THoth: Intelligence, Graphics and Programming</title>
+	<link rel= "stylesheet" type= "text/css" href="stylesheet/style.css">
+	<script src="thoth.js"></script>
+</head>
+
+<body>
+<a href="/"><img src="images/logo.jpg" alt="heading image" width="1074" height=""200"" class="header"></a>
+	<div class="header">
+		<h1></h1>
+		<ul class="header">
+			<li>Intelligence</li>
+			<li>Graphics</li>
+			<li>Programming</li>
+		</ul>
+	</div>
+	<div>
+		<form action="https://www.google.com/search">
+		<input name="p">
+		<input type= "submit" value="search">
+		</form>
+	</div>
+	<hr>
+	<div class="main">
+		<table class="main">
+		<tr>
+		<td><a href="/" class="main">HOME</a></td>
+		<td><a href="/downloads" class="main">DOWNLOADS</a></td>
+		<td><a href="/portfolio" class="main">PORTFOLIO</a></td>
+		</tr>
+		<td><a href="/education" class="main">EDUCATION</a></td>
+		<td><a href="/quotes" class="main">QUOTES<a></td>
+		<td><a href="/about" class="main">ABOUT ME</a></td>
+		</tr>
+		<tr>
+		<td><a href="/books" class="main">BOOKS</a></td>
+		</tr>
+		</table>
+		
+	</div>
+	<hr>
+
+	<div class="overall">
+	<div>
+	<h1>ADMIN</h1>
+	<hr>
+	<form action="/admin" method="post">
+	<textarea name="quote" style="background-color:#eeeeee">{{quote}}</textarea>
+	<br>
+	<br>
+	<input name="author" style="background-color:#eeeeee" value={{author}}>
+	<input type="submit">
+	<div class="error">{{error}}</div>
+	</form>
+	</div>
+	</div>
+	
+	<a href="source/main.py">get file</a>
+
+</body>
+</html>

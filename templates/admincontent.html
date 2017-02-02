@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>THoth: Intelligence, Graphics and Programming</title>
+	<link rel= "stylesheet" type= "text/css" href="stylesheet/style.css">
+	<script src="thoth.js"></script>
+</head>
+
+<body>
+<a href="/"><img src="images/logo.jpg" alt="heading image" width="1074" height=""200"" class="header"></a>
+	<div class="header">
+		<h1></h1>
+		<ul class="header">
+			<li>Intelligence</li>
+			<li>Graphics</li>
+			<li>Programming</li>
+		</ul>
+	</div>
+	<div>
+		<form action="https://www.google.com/search">
+		<input name="p">
+		<input type= "submit" value="search">
+		</form>
+	</div>
+	<hr>
+	<div class="main">
+		<table class="main">
+		<tr>
+		<td><a href="/" class="main">HOME</a></td>
+		<td><a href="/downloads" class="main">DOWNLOADS</a></td>
+		<td><a href="/portfolio" class="main">PORTFOLIO</a></td>
+		</tr>
+		<td><a href="/education" class="main">EDUCATION</a></td>
+		<td><a href="/quotes" class="main">QUOTES<a></td>
+		<td><a href="/about" class="main">ABOUT ME</a></td>
+		</tr>
+		<tr>
+		<td><a href="/books" class="main">BOOKS</a></td>
+		</tr>
+		</table>
+		
+	</div>
+	<hr>
+
+	<div class="overall">
+	<div>
+	<h1>ADMINCONTENT</h1>
+	<hr>
+	<form action="/admincontent" method="post">
+	<textarea name="content" style="background-color:#eeeeee">{{content}}</textarea>
+	<br>
+	<br>
+	<input name="heading" style="background-color:#eeeeee" value={{heading}}>
+	<br>
+	<input name="algorithmtag" type="checkbox" value="on">
+	<label for="algorithm">algorithm</label>
+	<br>
+	<input name="programmingtag" type="checkbox" value="on">
+	<label for="programming">programming</label>
+	<br>
+	<input name="artificialtag" type="checkbox" value="on">
+	<label for="artificial">artificial</label>
+	<br>
+	<input name="networkingtag" type="checkbox" value="on">
+	<label for="networking">networking</label>
+	<br>
+	<input name="graphicstag" type="checkbox" value="on">
+	<label for="graphics">graphics</label>
+	<br>
+	<input name="databasestag" type="checkbox" value="on">
+	<label for="databases">databases</label>
+	<br>
+	<input name="totaltags" style="background-color:#eeeeee" value={{totaltags}}>
+	<br>
+	<textarea name="summary" style="background-color:#eeeeee">{{summary}}</textarea>
+	<input type="submit">
+	<div class="error">{{error}}</div>
+	</form>
+	</div>
+	</div>
+	
+	<a href="source/main.py">get file</a>
+
+</body>
+</html>

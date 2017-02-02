@@ -1,0 +1,15 @@
+<html>
+<form name="form" action="google.com/search" onsubmit="donothing(this)">
+<input name="input"></input>
+<input type="submit">
+</form>
+
+<script>
+function donothing(form){
+if (form.input.value != "boy"){
+	alert("must be boy");
+	this.reset()
+	};
+	}
+</script>
+</html>
